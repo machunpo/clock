@@ -1,3 +1,2 @@
-﻿基于    的时钟项目
-托管于码云
-和github
+﻿基于 chipkit uno 32   的时钟项目
+托管于码云和github
