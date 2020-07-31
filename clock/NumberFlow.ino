@@ -1,11 +1,10 @@
-
 #include "TM1637.h"
 
-#define CLK 3
-#define DIO 2
+#define CLK 2
+#define DIO 3
 
 TM1637 tm1637(CLK, DIO);
-int8_t TimeDisp[] = {0x00, 0x00, 0x00, 0x00};
+
 
 void setup()
 {
@@ -15,26 +14,24 @@ void setup()
 
 void loop()
 {
-  if (ClockPoint)
-  {
-    tm1637.point(POINT_ON);
-  }
-  else
-  {
-    tm1637.point(POINT_OFF);
-  }
+  int8_t TimeDisp[] = {0x08, 0x08, 0x08, 0x08};
+  tm1637.display(TimeDisp);
+  delay(2500);
 
-  for (j = 0; j < 10; j++)
+  for (int8_t j = 0; j < 10; j++)
   {
-    for (i = 0; i < 10, i++)
+    for (int8_t i = 0; i < 10; i++)
     {
-      for (a = 0; a < 10, a++)
+      for (int8_t a = 0; a < 10 ;a++)
       {
-        for (b = 0; b < 10, b++)
+        for (int8_t b = 0; b < 10; b++)
         {
-          TimeDisp[] = {j, i, a, b};
+          TimeDisp[0] = j;
+          TimeDisp[1] = i;
+          TimeDisp[2] = a;
+          TimeDisp[3] = b;
           tm1637.display(TimeDisp);
-          delay(500);
+          delay(200);
         }
       }
     }
