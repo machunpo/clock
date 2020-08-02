@@ -4,13 +4,13 @@
 #define DIO 3
 
 TM1637 tm1637(CLK, DIO);
-int8_t TimeDisp[] = {0x00, 0x00, 0x00, 0x00};
+int8_t TimeDisp[] = {0x08, 0x08, 0x08, 0x08};
 int8_t Year = 20;
 int8_t Moon =  8;
 int8_t Day  =  2;
 int8_t Hour = 20;
 int8_t Min  =  0;
-int8_t Sec  =  0;
+int8_t Sec  =  5;
 
 
 void setup()
@@ -20,9 +20,9 @@ void setup()
   tm1637.point(POINT_ON);
   tm1637.display(TimeDisp);
   delay(2500);
+  tm1637.point(POINT_OFF);
   tm1637.clearDisplay();
   delay(2500);
-  //whether point light down?
 }
 
 void loop()
