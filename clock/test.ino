@@ -6,12 +6,11 @@
 TM1637 tm1637(CLK, DIO);
 int8_t TimeDisp[] = {0x08, 0x08, 0x08, 0x08};
 int8_t Year = 20;
-int8_t Moon =  8;
-int8_t Day  =  2;
+int8_t Moon = 8;
+int8_t Day = 2;
 int8_t Hour = 20;
-int8_t Min  =  0;
-int8_t Sec  =  5;
-
+int8_t Min = 0;
+int8_t Sec = 15;
 
 void setup()
 {
@@ -32,10 +31,10 @@ void loop()
   {
     for (int8_t i = 0; i < 10; i++)
     {
-      for (int8_t a = 0; a < 10 ;a++)
-      { 
-      // Whether to light the clock point ":".是否点亮时钟点“：
-      // To take effect the next time it displays.下次显示时生效
+      for (int8_t a = 0; a < 6; a++)
+      {
+        // Whether to light the clock point ":".是否点亮时钟点“：
+        // To take effect the next time it displays.下次显示时生效
         for (int8_t b = 0; b < 10; b++)
         {
           TimeDisp[0] = j;
@@ -44,10 +43,10 @@ void loop()
           TimeDisp[3] = b;
           tm1637.point(POINT_ON);
           tm1637.display(TimeDisp);
-          delay(300);
+          delay(500);
           tm1637.point(POINT_OFF);
           tm1637.display(TimeDisp);
-          delay(300);
+          delay(500);
         }
       }
     }
