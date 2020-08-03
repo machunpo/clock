@@ -46,7 +46,7 @@ void loop()
         }
       }
     }
-    Sec=1 //tiaozhen wuca
+    Sec=1; //调整误差
 }
         // Whether to light the clock point ":".是否点亮时钟点“：
         // To take effect the next time it displays.下次显示时生效
