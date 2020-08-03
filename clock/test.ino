@@ -26,21 +26,17 @@ void setup()
 
 void loop()
 {
-  //int8_t TimeDisp[] = {0x08, 0x08, 0x08, 0x08};
-  for (int8_t j = 0; j < 10; j++)
-  {
-    for (int8_t i = 0; i < 10; i++)
+
+    for (; Hour < 24; Hour++)
     {
-      for (int8_t a = 0; a < 6; a++)
+      for (; Min < 60; Min++)
       {
-        // Whether to light the clock point ":".是否点亮时钟点“：
-        // To take effect the next time it displays.下次显示时生效
-        for (int8_t b = 0; b < 10; b++)
+        for (; Sec < 60; Sec++)
         {
-          TimeDisp[0] = j;
-          TimeDisp[1] = i;
-          TimeDisp[2] = a;
-          TimeDisp[3] = b;
+          TimeDisp[0] = Hour / 10;
+          TimeDisp[1] = Hour % 10;
+          TimeDisp[2] = Min / 10;
+          TimeDisp[3] = Min % 10;
           tm1637.point(POINT_ON);
           tm1637.display(TimeDisp);
           delay(500);
@@ -50,6 +46,7 @@ void loop()
         }
       }
     }
-  }
+    Sec=1 //tiaozhen wuca
 }
-//next time to define the Sec
+        // Whether to light the clock point ":".是否点亮时钟点“：
+        // To take effect the next time it displays.下次显示时生效
