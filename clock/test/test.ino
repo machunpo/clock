@@ -52,3 +52,25 @@ void loop()
 }
 // Whether to light the clock point ":".是否点亮时钟点“：
 // To take effect the next time it displays.下次显示时生效
+/*
+
+if(count == 20)
+         {
+            count = 0;
+            sec++;
+            if(sec == 60)
+            {
+                sec = 0;
+                min++;
+                if(min == 60)
+                {
+                    min = 0;
+                    hour++;
+                    if(hour == 24)
+                    {
+                        hour = 0;
+                    }
+                }
+            }
+
+*/
