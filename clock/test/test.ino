@@ -14,6 +14,8 @@ int8_t Sec = 0;
 
 void setup()
 {
+  Serial.begin(9600);
+  //Serial.println（“Serial interface between PC and chipKIT”）;
   tm1637.init();
   tm1637.set(BRIGHT_DARKEST); //BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7
   tm1637.point(POINT_ON);
@@ -26,25 +28,40 @@ void setup()
 
 void loop()
 {
-  
-  Sec++;
-  if(Sec == 60) {
-       Sec = 0;
-       Min++;
-       if(Min == 60){
-           Min = 0;
-           Hour++;
-           if(Hour == 24){
-               Hour = 0;}}}
+  String inputString = "";
 
-        TimeDisp[0] = Hour / 10;
-        TimeDisp[1] = Hour % 10;
-        TimeDisp[2] = Min / 10;
-        TimeDisp[3] = Min % 10;
-        tm1637.point(POINT_ON);
-        tm1637.display(TimeDisp);
-        delay(499);
-        tm1637.point(POINT_OFF);
-        tm1637.display(TimeDisp);
-        delay(499);
+  while (Serial.available())       //判断是否接收到数据
+  {
+    inputString = inputString + char(Serial.read());
+    delay(2);
+  }
+
+  if (inputString) {
+    Serial.println(inputString);
+    Serial.flush();
+    Serial.println("flush clear!");
+  }
+  Sec++;
+  if (Sec == 60) {
+    Sec = 0;
+    Min++;
+    if (Min == 60) {
+      Min = 0;
+      Hour++;
+      if (Hour == 24) {
+        Hour = 0;
+      }
+    }
+  }
+
+  TimeDisp[0] = Hour / 10;
+  TimeDisp[1] = Hour % 10;
+  TimeDisp[2] = Min / 10;
+  TimeDisp[3] = Min % 10;
+  tm1637.point(POINT_ON);
+  tm1637.display(TimeDisp);
+  delay(499);
+  tm1637.point(POINT_OFF);
+  tm1637.display(TimeDisp);
+  delay(499);
 }
