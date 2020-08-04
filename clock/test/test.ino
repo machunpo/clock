@@ -1,5 +1,5 @@
 #include "TM1637.h"
-
+//下一步把时间print出来
 #define CLK 2
 #define DIO 3
 
@@ -15,7 +15,7 @@ String inputString = "";
 void setup()
 {
   Serial.begin(9600);
-  //Serial.println（“Serial interface between PC and chipKIT”）;
+  Serial.println("Serial interface between PC and chipKIT");
   tm1637.init();
   tm1637.set(BRIGHT_DARKEST); //BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7
   tm1637.point(POINT_ON);
@@ -40,6 +40,7 @@ void loop()
     int brry = inputString.toInt();
     Hour = brry / 100;
     Min  = brry % 100;
+    Sec  =  0;
     inputString = "";
   }
   
