@@ -11,7 +11,7 @@ int8_t Day = 2;
 int8_t Hour = 20;
 int8_t Min = 47;
 int8_t Sec = 0;
-
+String inputString = "";
 void setup()
 {
   Serial.begin(9600);
@@ -28,19 +28,21 @@ void setup()
 
 void loop()
 {
-  String inputString = "";
-
+  
   while (Serial.available())       //判断是否接收到数据
   {
     inputString = inputString + char(Serial.read());
     delay(2);
   }
+   //Serial.println(inputString+"hao");
 
-  if (inputString) {
-    Serial.println(inputString);
-    Serial.flush();
-    Serial.println("flush clear!");
+  if (inputString!="") {
+    int brry = inputString.toInt();
+    Hour = brry / 100;
+    Min  = brry % 100;
+    inputString = "";
   }
+  
   Sec++;
   if (Sec == 60) {
     Sec = 0;
