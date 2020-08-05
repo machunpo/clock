@@ -1,0 +1,7 @@
+{
+    "board": "chipKIT:pic32:uno_pic32",
+    "configuration": "PMOD=no",
+    "port": "COM1",
+    "sketch": "clock\\test\\test.ino",
+    "programmer": "Arduino as ISP"
+}
