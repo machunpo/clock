@@ -12,9 +12,12 @@ int8_t Hour = 20;
 int8_t Min = 47;
 int8_t Sec = 0;
 String inputString = "";
+int ledPin = 13;
+
 void setup()
 {
   Serial.begin(9600);
+  pinMode(ledPin,OUTPUT);
   Serial.println("Serial interface between PC and chipKIT");
   tm1637.init();
   tm1637.set(BRIGHT_DARKEST); //BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7
@@ -28,7 +31,7 @@ void setup()
 
 void loop()
 {
-  
+  digitalWrite(ledPin,LOW);
   while (Serial.available())       //判断是否接收到数据
   {
     inputString = inputString + char(Serial.read());
@@ -41,6 +44,8 @@ void loop()
     Hour = brry / 100;
     Min  = brry % 100;
     Sec  =  0;
+    Serial.print("input number is:");
+    Serial.println(brry);
     inputString = "";
   }
   
