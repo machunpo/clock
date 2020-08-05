@@ -49,6 +49,12 @@ void loop()
     Sec = 0;
     Min++;
     //Serial.println(TimeDisp);//看看能不能打印出来
+    String d="";
+    for(int i=0;i<4;i++){
+      d = d + TimeDisp[i];
+    }
+    Serial.println(d);
+    //end
     if (Min == 60) {
       Min = 0;
       Hour++;
