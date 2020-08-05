@@ -1,5 +1,5 @@
 #include "TM1637.h"
-//下一步把时间print出来
+
 #define CLK 2
 #define DIO 3
 
@@ -34,7 +34,7 @@ void loop()
     inputString = inputString + char(Serial.read());
     delay(2);
   }
-   //Serial.println(inputString+"hao");
+   
 
   if (inputString!="") {
     int brry = inputString.toInt();
@@ -48,6 +48,7 @@ void loop()
   if (Sec == 60) {
     Sec = 0;
     Min++;
+    Serial.println(TimeDisp);//看看能不能打印出来
     if (Min == 60) {
       Min = 0;
       Hour++;
