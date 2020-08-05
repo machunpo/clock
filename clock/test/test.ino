@@ -48,7 +48,7 @@ void loop()
   if (Sec == 60) {
     Sec = 0;
     Min++;
-    Serial.println(TimeDisp);//看看能不能打印出来
+    //Serial.println(TimeDisp);//看看能不能打印出来
     if (Min == 60) {
       Min = 0;
       Hour++;

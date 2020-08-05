@@ -3,5 +3,5 @@
     "configuration": "PMOD=no",
     "port": "COM1",
     "sketch": "clock\\test\\test.ino",
-    "programmer": "Arduino as ISP"
+    "programmer": "ArduinoISP"
 }
