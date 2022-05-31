@@ -17,7 +17,7 @@ int ledPin = 13;
 void setup()
 {
   Serial.begin(9600);
-  pinMode(ledPin,OUTPUT);
+  pinMode(ledPin, OUTPUT);
   Serial.println("Serial interface between PC and chipKIT");
   tm1637.init();
   tm1637.set(BRIGHT_DARKEST); //BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7
@@ -31,15 +31,15 @@ void setup()
 
 void loop()
 {
-  digitalWrite(ledPin,LOW);
+  digitalWrite(ledPin, LOW);
   while (Serial.available())       //判断是否接收到数据
   {
     inputString = inputString + char(Serial.read());
     delay(2);
   }
-   
 
-  if (inputString!="") {
+
+  if (inputString != "") {
     int brry = inputString.toInt();
     Hour = brry / 100;
     Min  = brry % 100;
@@ -48,14 +48,14 @@ void loop()
     Serial.println(brry);
     inputString = "";
   }
-  
+
   Sec++;
   if (Sec == 60) {
     Sec = 0;
     Min++;
     //Serial.println(TimeDisp);//看看能不能打印出来
-    String d="";
-    for(int i=0;i<4;i++){
+    String d = "";
+    for (int i = 0; i < 4; i++) {
       d = d + TimeDisp[i];
     }
     Serial.println(d);
@@ -75,8 +75,8 @@ void loop()
   TimeDisp[3] = Min % 10;
   tm1637.point(POINT_ON);
   tm1637.display(TimeDisp);
-  delay(499);
+  delay(498.9);
   tm1637.point(POINT_OFF);
   tm1637.display(TimeDisp);
-  delay(499);
+  delay(498.9);
 }
